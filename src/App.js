@@ -13,17 +13,37 @@ class App extends Component {
     filter: '',
   };
 
-  static propTypes = {};
+  static propTypes = {
+    contacts: PropTypes.array,
+    filter: PropTypes.string,
+  };
 
   // функция для получения данных из формы и добавдение в контакты
 
   addContact = data => {
-    // const phonebookMurkup = [];
-    this.setState(({ contacts }) => ({
-      contacts: [data, ...contacts],
-    }));
-    // console.log(data);
+    const { contacts } = this.state;
+
+    for (let contact of contacts) {
+      if (data.name === contact.name) {
+        alert(`${data.name} is already in contact`);
+        return;
+      } else {
+        this.setState(({ contacts }) => ({
+          contacts: [data, ...contacts],
+        }));
+      }
+    }
   };
+
+  // функция для удаления контактов
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
+  //  функция фильтрации контактов по имени
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
@@ -31,12 +51,11 @@ class App extends Component {
 
   render() {
     const normalizeFilter = this.state.filter.toLowerCase();
-
-    const filterEl = this.state.contacts.filter(contact =>
+    const { contacts } = this.state;
+    const filterContact = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizeFilter),
     );
 
-    console.log(filterEl);
     return (
       <>
         <Section title="Phonebook">
@@ -44,7 +63,10 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter value={this.state.filter} onChange={this.changeFilter} />
-          <ContactList contacts={filterEl} />
+          <ContactList
+            contacts={filterContact}
+            onDeleteContact={this.deleteContact}
+          />
         </Section>
       </>
     );

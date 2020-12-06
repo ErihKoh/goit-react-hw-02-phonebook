@@ -1,10 +1,10 @@
 import s from './ContactEl.module.css';
-import PropTypes from 'prop-types';
-function ContactEl({ element }) {
+
+function ContactEl({ contact }) {
   return (
     <>
-      <span>{element.name}: </span>
-      <span>{element.number}</span>
+      <span>{contact.name}: </span>
+      <span>{contact.number}</span>
     </>
   );
 }

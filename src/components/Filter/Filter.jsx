@@ -9,4 +9,9 @@ function Filter({ value, onChange }) {
   );
 }
 
+Filter.protoTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
 export default Filter;

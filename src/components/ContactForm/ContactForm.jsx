@@ -8,7 +8,10 @@ class ContactForm extends Component {
     name: '',
     number: '',
   };
-  static propTypes = {};
+  static propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.number,
+  };
 
   handleInputChange = e => {
     const { name, value } = e.currentTarget;
