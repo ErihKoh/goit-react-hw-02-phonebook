@@ -22,17 +22,24 @@ class App extends Component {
 
   addContact = data => {
     const { contacts } = this.state;
+    if (data.name === '') {
+      alert('eneter name');
+      return;
+    }
+    if (data.number === '') {
+      alert('eneter number');
+      return;
+    }
 
     for (let contact of contacts) {
       if (data.name === contact.name) {
         alert(`${data.name} is already in contact`);
         return;
-      } else {
-        this.setState(({ contacts }) => ({
-          contacts: [data, ...contacts],
-        }));
       }
     }
+    this.setState(({ contacts }) => ({
+      contacts: [data, ...contacts],
+    }));
   };
 
   // функция для удаления контактов

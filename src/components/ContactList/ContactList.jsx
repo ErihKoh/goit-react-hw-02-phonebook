@@ -4,11 +4,15 @@ import ContactEl from '../ContactEl';
 
 function ContactList({ contacts, onDeleteContact }) {
   return (
-    <ul>
+    <ul className={s.list}>
       {contacts.map(({ id, name, number }) => (
-        <li key={id}>
+        <li key={id} className={s.item}>
           <ContactEl contact={{ name, number }} />
-          <button type="button" onClick={() => onDeleteContact(id)}>
+          <button
+            className={s.btn}
+            type="button"
+            onClick={() => onDeleteContact(id)}
+          >
             Delete
           </button>
         </li>
