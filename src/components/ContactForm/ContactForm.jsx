@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
@@ -16,7 +17,7 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onSubmit({ ...this.state, id: shortid.generate() });
     this.reset();
   };
 
