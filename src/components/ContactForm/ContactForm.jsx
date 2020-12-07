@@ -35,28 +35,24 @@ class ContactForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className={s.form}>
-        <label className={s.name}>
-          Name
-          <input
-            className={s.inputName}
-            type="text"
-            name="name"
-            value={this.state.name}
-            autoComplete="off"
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <label className={s.number}>
-          Number
-          <input
-            className={s.inputNumber}
-            type="tel"
-            name="number"
-            value={this.state.number}
-            autoComplete="off"
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <label className={s.name}>Name</label>
+        <input
+          className={s.inputName}
+          type="text"
+          name="name"
+          value={this.state.name}
+          autoComplete="off"
+          onChange={this.handleInputChange}
+        />
+        <label className={s.number}>Number</label>
+        <input
+          className={s.inputNumber}
+          type="tel"
+          name="number"
+          value={this.state.number}
+          autoComplete="off"
+          onChange={this.handleInputChange}
+        />
         <button type="submit" className={s.btn}>
           Add contact
         </button>

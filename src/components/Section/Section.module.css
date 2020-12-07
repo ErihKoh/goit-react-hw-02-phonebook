@@ -1,7 +1,11 @@
 .section {
   max-width: 1024px;
-  padding: 40px;
-  margin-right: auto;
-  margin-left: auto;
+  padding: 20px;
+  /* margin-right: auto; */
+  /* margin-left: auto; */
+  /* text-align: center; */
+}
+
+h1 {
   text-align: center;
 }

@@ -1,46 +1,37 @@
 .form {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  padding: 20px;
-  margin-right: auto;
-  margin-left: auto;
-  border: 2px solid #000;
-  border-radius: 5px;
+  padding: 15px;
 }
 
 .name {
+  margin-bottom: 10px;
   font-weight: 500;
   font-size: 20px;
-  line-height: 1.33;
 }
 .inputName {
-  max-width: 300px;
+  margin-bottom: 10px;
   height: 20px;
-  margin-left: 40px;
-  margin-bottom: 20px;
 }
 
 .number {
+  margin-bottom: 10px;
   font-weight: 500;
   font-size: 20px;
-  line-height: 1.33;
 }
 
 .inputNumber {
-  max-width: 300px;
-  height: 20px;
-  margin-left: 20px;
   margin-bottom: 20px;
+  height: 20px;
 }
 
 .btn {
   display: inline-block;
   max-width: 100px;
   height: 30px;
-  margin-right: auto;
   margin-left: auto;
-  border-radius: 25px;
+  margin-right: auto;
+  border-radius: 5px;
   outline: none;
   border: none;
   background-color: #ffe4b5;
@@ -48,5 +39,5 @@
 }
 
 .btn:hover {
-  background-color: #00bfff;
+  box-shadow: 0 0 5px rgb(9, 192, 91);
 }

@@ -64,7 +64,7 @@ class App extends Component {
     );
 
     return (
-      <>
+      <div className="block">
         <Section title="Phonebook">
           <ContactForm onSubmit={this.addContact} />
         </Section>
@@ -75,7 +75,7 @@ class App extends Component {
             onDeleteContact={this.deleteContact}
           />
         </Section>
-      </>
+      </div>
     );
   }
 }

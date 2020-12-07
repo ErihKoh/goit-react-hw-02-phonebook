@@ -40,3 +40,12 @@
 .App-book {
   border: 2px solid #000;
 }
+
+.block {
+  max-width: 400px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
