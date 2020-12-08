@@ -1,5 +1,5 @@
 .list {
-  width: 400px;
+  /* width: 400px; */
   padding-left: 5px;
   margin-right: auto;
   margin-left: auto;
@@ -8,18 +8,9 @@
 .item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: baseline;
 }
 
-.btn {
-  width: 60px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: #ffe4b5;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #ff0000;
+.item:not(:last-child) {
+  margin-bottom: 15px;
 }

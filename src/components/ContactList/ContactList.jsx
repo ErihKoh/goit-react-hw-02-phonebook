@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 import ContactEl from '../ContactEl';
+import IconBatton from '../IconButton';
+import { ReactComponent as DelIcon } from '../../icons/delete.svg';
 
 function ContactList({ contacts, onDeleteContact }) {
   return (
@@ -8,13 +10,16 @@ function ContactList({ contacts, onDeleteContact }) {
       {contacts.map(({ id, name, number }) => (
         <li key={id} className={s.item}>
           <ContactEl contact={{ name, number }} />
-          <button
+          {/* <button
             className={s.btn}
             type="button"
             onClick={() => onDeleteContact(id)}
           >
             Delete
-          </button>
+          </button> */}
+          <IconBatton onClick={() => onDeleteContact(id)} aria-label="Add todo">
+            <DelIcon width="15" height="15" fill="#fff" />
+          </IconBatton>
         </li>
       ))}
     </ul>
