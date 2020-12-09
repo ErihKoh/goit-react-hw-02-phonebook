@@ -1,15 +1,21 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import '@pnotify/core/dist/BrightTheme.css';
+import '@pnotify/core/dist/PNotify.css';
+import { error, notice } from '@pnotify/core';
+import { defaults } from '@pnotify/core';
 import './App.css';
 import Section from './components/Section';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
-import contacts from './components/ContactList/contacts';
+// import contacts from './components/ContactList/contacts';
+
+defaults.delay = 2000;
 
 class App extends Component {
   state = {
-    contacts,
+    contacts: [],
     filter: '',
   };
 
@@ -18,28 +24,53 @@ class App extends Component {
     filter: PropTypes.string,
   };
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parseContacts = JSON.parse(contacts);
+    parseContacts && this.setState({ contacts: parseContacts });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const nextContacts = this.state.contacts;
+    const prevcontacts = prevState.contacts;
+
+    if (nextContacts !== prevcontacts) {
+      localStorage.setItem('contacts', JSON.stringify(nextContacts));
+    }
+  }
+
   // функция для получения данных из формы и добавдение в контакты
 
   addContact = data => {
     const { contacts } = this.state;
     if (data.name === '') {
-      alert('eneter name');
-      return;
+      return error({
+        title: 'Error',
+        text: 'Please eneter name!',
+      });
     }
     if (data.number === '') {
-      alert('eneter number');
+      return error({
+        title: 'Error',
+        text: 'Please eneter number!',
+      });
+    }
+
+    const findContact = contacts.find(({ name }) => data.name === name);
+
+    if (!findContact) {
+      this.setState(({ contacts }) => ({
+        contacts: [data, ...contacts],
+      }));
       return;
     }
 
-    for (let contact of contacts) {
-      if (data.name === contact.name) {
-        alert(`${data.name} is already in contact`);
-        return;
-      }
+    if (findContact.name === data.name) {
+      notice({
+        title: 'Notice',
+        text: `${data.name} is already in contacts.`,
+      });
     }
-    this.setState(({ contacts }) => ({
-      contacts: [data, ...contacts],
-    }));
   };
 
   // функция для удаления контактов

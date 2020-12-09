@@ -10,13 +10,6 @@ function ContactList({ contacts, onDeleteContact }) {
       {contacts.map(({ id, name, number }) => (
         <li key={id} className={s.item}>
           <ContactEl contact={{ name, number }} />
-          {/* <button
-            className={s.btn}
-            type="button"
-            onClick={() => onDeleteContact(id)}
-          >
-            Delete
-          </button> */}
           <IconBatton onClick={() => onDeleteContact(id)} aria-label="Add todo">
             <DelIcon width="15" height="15" fill="#fff" />
           </IconBatton>
